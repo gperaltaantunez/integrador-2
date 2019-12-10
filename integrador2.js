@@ -13,7 +13,9 @@ let accion = "";
 let volverAlMenu = "SI";
 
 while (accion != "SALIR") {
+
     if (accion === "") {
+
         accion = prompt(`   
         ⚙️ SELECCIONE UNA OPERACIÓN:
 
@@ -70,7 +72,7 @@ while (accion != "SALIR") {
 
     //-------------------OBTENER--------------------//    
     } else if (accion === "OBTENER") {
-        
+        debugger;
         let opcionDeBusqueda = "";
 
         opcionDeBusqueda = prompt(`
@@ -88,16 +90,19 @@ while (accion != "SALIR") {
 
         if (opcionDeBusqueda === "ID" || opcionDeBusqueda === "NOMBRE" || opcionDeBusqueda === "TELEFONO" || opcionDeBusqueda === "EMAIL") {
 
+            let valorDeBusqueda = prompt(`Ingrese el valor de ${opcionDeBusqueda} a buscar`)
+
             for (let i = 0; i < usuarios.length; i++) {
                 for (let j = 0; j < usuarios[i].length; j++) {
-                    if (usuarios[i][j] = opcionDeBusqueda) {
+
+                    if (usuarios[i][j] == valorDeBusqueda) {
                         alert(`
                         Los datos del usuario son:
                         
-                        ID: ${usuarios[i][j]}
-                        NOMBRE: ${usuarios[i][j]}
-                        TELEFONO: ${usuarios[i][j]}
-                        EMAIL: ${usuarios[i][j]}
+                        ID: ${usuarios[i][0]}
+                        NOMBRE: ${usuarios[i][1]}
+                        TELEFONO: ${usuarios[i][2]}
+                        EMAIL: ${usuarios[i][3]}
 
                         `)
                     }
@@ -170,19 +175,21 @@ while (accion != "SALIR") {
                 } else {
                     alert("❌ La operación no se ha realizado")
                 }
+
+                confirmaEliminar = confirmaEliminar.toUpperCase()
+
             }
 
-            confirmaEliminar = confirmaEliminar.toUpperCase()
+            let repiteOperacionEliminar = prompt("🔄 ¿Desea repetir la operación? SI/NO")
+
+            repiteOperacionEliminar = repiteOperacionEliminar.toUpperCase()
+
+            if (repiteOperacionEliminar != "SI") {
+                accion = "";
+            }
         }
 
-        let repiteOperacionEliminar = prompt("🔄 ¿Desea repetir la operación? SI/NO")
-
-        repiteOperacionEliminar = repiteOperacionEliminar.toUpperCase()
-
-        if (repiteOperacionEliminar != "SI") {
-            accion = "";
-        }
-
+        
     //-------------------SALIR--------------------//    
     } else if (accion === "SALIR") {
 
@@ -209,6 +216,7 @@ while (accion != "SALIR") {
         ❌ Opción inválida
         Por favor ingrese una opción correcta
         `)
+        accion = ""
 
     }
 }
